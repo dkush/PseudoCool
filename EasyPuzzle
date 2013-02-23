@@ -1,0 +1,68 @@
+# all of this will be part of __init__() for Grid Class
+corresp_sqs = dict()
+rows = dict()
+cols = dict()
+make_rows(rows)
+make_cols(cols)
+pVals, aVals = populate_Vals(corresp_sqs)
+
+# generate puzzle from here: http://static.guim.co.uk/sys-images/Guardian/Pix/pixies/2009/5/8/1241794475585/Sudoku-1247-easy-001.jpg
+
+
+assign((1,2),9,aVals,pVals,corresp_sqs,rows,cols)
+assign((1,3),3,aVals,pVals,corresp_sqs,rows,cols)
+assign((1,4),1,aVals,pVals,corresp_sqs,rows,cols)
+assign((1,6),5,aVals,pVals,corresp_sqs,rows,cols)
+assign((1,7),6,aVals,pVals,corresp_sqs,rows,cols)
+assign((1,8),4,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((9,2),4,aVals,pVals,corresp_sqs,rows,cols)
+assign((9,3),7,aVals,pVals,corresp_sqs,rows,cols)
+assign((9,4),3,aVals,pVals,corresp_sqs,rows,cols)
+assign((9,6),2,aVals,pVals,corresp_sqs,rows,cols)
+assign((9,7),8,aVals,pVals,corresp_sqs,rows,cols)
+assign((9,8),5,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((2,1),7,aVals,pVals,corresp_sqs,rows,cols)
+assign((2,9),5,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((3,1),5,aVals,pVals,corresp_sqs,rows,cols)
+assign((3,3),1,aVals,pVals,corresp_sqs,rows,cols)
+assign((3,4),2,aVals,pVals,corresp_sqs,rows,cols)
+assign((3,6),9,aVals,pVals,corresp_sqs,rows,cols)
+assign((3,7),3,aVals,pVals,corresp_sqs,rows,cols)
+assign((3,9),7,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((7,1),3,aVals,pVals,corresp_sqs,rows,cols)
+assign((7,3),2,aVals,pVals,corresp_sqs,rows,cols)
+assign((7,4),4,aVals,pVals,corresp_sqs,rows,cols)
+assign((7,6),8,aVals,pVals,corresp_sqs,rows,cols)
+assign((7,7),1,aVals,pVals,corresp_sqs,rows,cols)
+assign((7,9),9,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((8,1),6,aVals,pVals,corresp_sqs,rows,cols)
+assign((8,9),4,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((4,1),2,aVals,pVals,corresp_sqs,rows,cols)
+assign((4,9),3,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((6,1),9,aVals,pVals,corresp_sqs,rows,cols)
+assign((6,9),1,aVals,pVals,corresp_sqs,rows,cols)
+
+assign((5,2),3,aVals,pVals,corresp_sqs,rows,cols)
+assign((5,3),6,aVals,pVals,corresp_sqs,rows,cols)
+assign((5,4),9,aVals,pVals,corresp_sqs,rows,cols)
+assign((5,6),7,aVals,pVals,corresp_sqs,rows,cols)
+assign((5,7),5,aVals,pVals,corresp_sqs,rows,cols)
+assign((5,8),2,aVals,pVals,corresp_sqs,rows,cols)
+
+
+# assess that puzzle is correctly laid out (via visual inspection)
+print_puzzle(aVals)
+print "\n\n\n\n"
+
+# run solver program
+run_solver(aVals,pVals,corresp_sqs,rows,cols)
+
+# look to see if puzzle is solved after 10 passes of run_solver
+print_puzzle(aVals)
