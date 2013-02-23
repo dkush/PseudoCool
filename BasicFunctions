@@ -89,7 +89,7 @@ def print_puzzle(assignedVals):
 	 prints current state of the puzzle
 	 as a 9 x 9 grid
 	'''
-	rint " __________________________________"
+	print " __________________________________"
 	for x in range(1,10):
 		print get_row_print(x,assignedVals)
 	print " ----------------------------------"
@@ -125,3 +125,8 @@ def only_in(which_dict,which_item,aVals,pVals,csqs,rows,cols):
 				if x in pVals[cell]:
 					assign(cell,x,aVals,pVals,csqs,rows,cols)
 
+def run_solver(aVals,pVals,corresp_sqs,rows,cols):
+	for x in range(1,10):
+		only_in(corresp_sqs,x,aVals,pVals,corresp_sqs,rows,cols)
+		only_in(rows,x,aVals,pVals,corresp_sqs,rows,cols)
+		only_in(cols,x,aVals,pVals,corresp_sqs,rows,cols)
