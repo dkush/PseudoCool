@@ -126,14 +126,15 @@ def only_in(which_dict,which_item,aVals,pVals,csqs,rows,cols):
 					assign(cell,x,aVals,pVals,csqs,rows,cols)
 
 
-def reductive_pass(coord,corresp_sqs,rows,cols):
+def reductive_pass(coord,possVals,corresp_sqs,rows,cols):
 	# subtracts filled-in values from row, column, and square cell(x,y) 
 	# is a member of from possible range of vals for cell(x,y)
 	possList = possVals[coord]
-	lists = [rows[coord[1]],cols[coord[2]], corresp_sqs[get_sthg(coord,corresp_sqs)]]
+	lists = [rows[coord[0]],cols[coord[1]], get_sthg(coord,corresp_sqs)]
 	for xs in lists:
 		possList = list(set(possList)-set(xs))
 	return possList
+
 
 
 def update_possVals(aVals,pVals,corresp_sqs,rows,cols):
