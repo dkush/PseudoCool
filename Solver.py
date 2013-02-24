@@ -1,8 +1,10 @@
 import collections
 import re
+import sys
+import os
 
 class Grid:
-  
+	
 	def __init__(self):
 		self.corresp_sqs = dict()
 		self.rows = dict()
@@ -98,7 +100,28 @@ class Grid:
 		row += "|"
 		row = re.sub('0'," ",row)
 		return row
+	
+	def input_puzzle(self):
+		input_rows=[]
+		print "Input rows, one at a time, each cell separated by commas."
+		print "e.g. '1,2,3,4,5,6,7,8,9'"
+		print "If a cell is empty, just don't put anything between the commas."
+		print "e.g. '1,2,,4,5,6,,8,'"
+		
+		for row in range(1,10):
+			input_row = str(input('Input row:')) 
+			input_rows.append(input_row)
 
+		for row in range(1,10):
+			input_row = input_rows[row-1].split(",")
+			for col in range(1,10):
+				if input_row[col-1].isdigit():
+					self.assign((row,col),int(input_row[col-1]))
+		
+		print "Here's the puzzle you input:"
+		self.print_puzzle()
+		
+		
 
 
 
@@ -160,56 +183,11 @@ class Solver:
 			xx+=1
 
 
+
+
 if __name__ == '__main__':
 	grid = Grid()
 	solver = Solver(grid)
-	
-	grid.assign((1,2),9)
-	grid.assign((1,3),3)
-	grid.assign((1,4),1)
-	grid.assign((1,6),5)
-	grid.assign((1,7),6)
-	grid.assign((1,8),4)
-                       
-	grid.assign((9,2),4)
-	grid.assign((9,3),7)
-	grid.assign((9,4),3)
-	grid.assign((9,6),2)
-	grid.assign((9,7),8)
-	grid.assign((9,8),5)
-                       
-	grid.assign((2,1),7)
-	grid.assign((2,9),5)
-                       
-	grid.assign((3,1),5)
-	grid.assign((3,3),1)
-	grid.assign((3,4),2)
-	grid.assign((3,6),9)
-	grid.assign((3,7),3)
-	grid.assign((3,9),7)
-                       
-	grid.assign((7,1),3)
-	grid.assign((7,3),2)
-	grid.assign((7,4),4)
-	grid.assign((7,6),8)
-	grid.assign((7,7),1)
-	grid.assign((7,9),9)
-                       
-	grid.assign((8,1),6)
-	grid.assign((8,9),4)
-                       
-	grid.assign((4,1),2)
-	grid.assign((4,9),3)
-                       
-	grid.assign((6,1),9)
-	grid.assign((6,9),1)
-                       
-	grid.assign((5,2),3)
-	grid.assign((5,3),6)
-	grid.assign((5,4),9)
-	grid.assign((5,6),7)
-	grid.assign((5,7),5)
-	grid.assign((5,8),2)
-	grid.print_puzzle()
+	grid.input_puzzle()
 	solver.run_solver(grid)
 	grid.print_puzzle()
