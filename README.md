@@ -16,9 +16,13 @@ The solver outputs a puzzle (finished or otherwise) when it assesses that it can
 Degree of confidence in the solver's ability to complete puzzles of a given level of difficulty:
 
 Very Easy -- 100% Confident
+
 Easy -- 95% Confident
+
 Medium -- 50% Confident
+
 Hard -- 25% Confident
+
 Very Hard -- 0-5% Confident
 
 
