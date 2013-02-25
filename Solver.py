@@ -195,4 +195,3 @@ if __name__ == '__main__':
 	solver = Solver(grid)
 	grid.input_puzzle()
 	solver.run_solver(grid)
-	grid.print_puzzle()
