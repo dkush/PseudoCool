@@ -3,9 +3,27 @@ PseudoCool
 
 PseudoCool - Simple Sudoku Solver
 
-Will most likely only solve puzzles of medium difficulty or below.
+The solver implements simple inferential strategies/heuristics modeled after human strategies for solving sudoku puzzles.
 
-As of 2/23/2013, the code fragment can solve (at least some) very easy and easy puzzles. 
+Each strategy is run independently in order of complexity. (higher-order strategies to be added, see list of strategies below.)
+
+Inferences or constraints from one strategy/level are *not* explicitly carried forward/available to the next strategy.
+As a result, some of the higher-level reasoning required for more complicated puzzles isn't possible.
+
+The solver outputs a puzzle (finished or otherwise) when it assesses that it can make no more changes.
+
+###############################
+Degree of confidence in the solver's ability to complete puzzles of a given level of difficulty:
+
+Very Easy -- 100% Confident
+Easy -- 95% Confident
+Medium -- 50% Confident
+Hard -- 25% Confident
+Very Hard -- 0-5% Confident
+
+
+###############################
+
 
 Types of inference performed:
   - for some cell, if there's only one possible value, assign value to that cell
