@@ -121,10 +121,12 @@ class Grid:
 		print "Here's the puzzle you input:"
 		self.print_puzzle()
 		
-		
-
-
-
+	def assess_state(self):	
+		assignedVals = 0
+		for key in self.assVals:
+			if self.assVals[key] != 0:
+				assignedVals += 1
+		return assignedVals
 
 
 class Solver:
@@ -170,18 +172,21 @@ class Solver:
 		for cell in grid.possVals:
 			if len(grid.possVals[cell]) == 1:
 				grid.assign(cell,grid.possVals[cell].pop())
-	
+		
 	def run_solver(self,grid):
-		xx = 0
-		while xx < 10:
+		moreToDo = True
+		while moreToDo:
+			oldState = grid.assess_state()
 			self.update_possVals(grid)
 			self.look_for_singletons(grid)
 			for x in range(1,10):
 				self.only_in(grid.corresp_sqs,x,grid)
 				self.only_in(grid.rows,x,grid)
 				self.only_in(grid.cols,x,grid)
-			xx+=1
-
+			grid.print_puzzle()	
+			currState = grid.assess_state()
+			if oldState == currState:
+				moreToDo = False
 
 
 
